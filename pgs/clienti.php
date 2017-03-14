@@ -25,7 +25,7 @@
 			<h4 class="msg label error">
 				<?=$e->getMessage()?>
 			</h4>
-			<?
+			<?php
 		}	
 	endif;
 	
@@ -41,14 +41,18 @@
 	<?php foreach ($data as $dt) : ?>
 		<article>
 			<form method="post" action="<?=$url?>">
-				<input name="nome"  value="<?=$dt->nome?>"  />
+                            <input name="nome"  value="<?=$dt->nome?>"  required/>
+                            <input name="email"  value="<?=$dt->email?>" placeholder="email"  />
+                            <input name="telefono"  value="<?=$dt->telefono?>" placeholder="telefono" />
+                            <input name="residenza"  value="<?=$dt->residenza?>" placeholder="indirizzo di residenza" />
 				<input type="hidden" name="id" value="<?=$dt->id?>" />
 				<button type="submit" tabindex="-1">
 					Salva
 				</button>
-				<a href="?p=<?=$url?>&del=<?=$dt['id']?>" class="button dangerous" tabindex="-1">
+				<a href="<?=$url?>&del=<?=$dt['id']?>" class="button dangerous" tabindex="-1">
 					Elimina
-				</a>					
+				</a>	
+                               
 			</form>
 		</article>
 	<?php endforeach; ?>
